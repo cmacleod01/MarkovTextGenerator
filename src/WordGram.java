@@ -22,9 +22,7 @@ public class WordGram implements Comparable<WordGram>{
 			String current = myWords[k];
 			char firstChar = current.charAt(0);
 			int firstValue = (int) firstChar;
-			char secondChar = current.charAt(1);
-			int secondValue = (int) secondChar;
-			myHash = (current.hashCode() + current.length() / firstValue * secondValue) + k;
+			myHash = (current.hashCode() + current.length() / firstValue) + k;
 		}
 	
 		return myHash;
@@ -101,7 +99,14 @@ public class WordGram implements Comparable<WordGram>{
 	}
 	
 	public WordGram shiftAdd(String last) {
-		WordGram obj;
-		return new WordGram(null,0,0);
+		String[] newArray = new String[this.length()];
+		for(int i=0;i<this.length()-1;i++) {
+			newArray[i] = this.myWords[i+1];
+		}
+		newArray[this.length()-1] = last;
+//		WordGram obj;
+	
+		
+		return new WordGram(newArray,0,newArray.length);
 	}
 }
