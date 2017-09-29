@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class MarkovModel  implements MarkovInterface<String> {
@@ -6,11 +8,17 @@ public class MarkovModel  implements MarkovInterface<String> {
 	protected Random myRandom;
 	protected int myOrder;
 	protected static String PSEUDO_EOS = "";
-	protected static long RANDOM_SEED = 5678;
+	protected static long RANDOM_SEED = 1234;
 	
 	public MarkovModel(int order) {
 		myOrder = order;
 		myRandom = new Random(RANDOM_SEED);
+	}
+
+
+	{
+		
+		
 	}
 	
 	public MarkovModel() {

@@ -1,10 +1,11 @@
+
 import java.io.File;
 import java.util.Scanner;
 import java.util.*;
 
 /**
  * Driver for Markov Model classes
- * @author ola
+ * @author carolynmacleod
  *
  */
 
