@@ -75,5 +75,35 @@ public class WordGramTester {
 		assertEquals("shift add",as.equals(b),true);
 		assertEquals("shift add length",as.length() == a.length(),true);
 	}
+	@Test
+	public void testToString() {
+		String[] words = {"cs", "is", "so", "hard","hard", "how", "are", "you"};
+		WordGram a = new WordGram(words,0,4);
+		WordGram b = new WordGram(words,1,4);
+		WordGram c = new WordGram(words,5,3);
+		WordGram d = new WordGram(words,3,2);
+//		WordGram as = a.toString();
+		assertEquals("cs is so hard",a.toString());
+		assertEquals("is so hard hard",b.toString());
+		assertEquals("how are you",c.toString());
+		assertEquals("hard hard",d.toString());
+		
+	
+	}
+	@Test
+	public void testShiftAdd() {
+		String[] words = {"hey", "professors", "help", "me","cat"};
+		String[] words2 = {"professors", "help", "me","cat", "death"};
+		String[] words3 = {"help", "me","cat", "death", "dying"};
+		String[] words4 = {"me","cat", "death", "dying", "destruction"};
+		WordGram a = new WordGram(words,0,5);
+		WordGram b = new WordGram(words2,0,5);
+		WordGram c = new WordGram(words3,0,5);
+		WordGram d = new WordGram(words4,0,5);
+		assertEquals("shift add tester works",a.shiftAdd("death").equals(b),true);
+		assertEquals("shift add tester works",b.shiftAdd("dying").equals(c),true);
+		assertEquals("shift add tester works",c.shiftAdd("destruction").equals(d),true);
+		assertEquals("shift add tester fails",a.shiftAdd("death").equals(c),false);
+	}
 
 }

@@ -20,9 +20,7 @@ public class WordGram implements Comparable<WordGram>{
 	public int hashCode() { 
 		for(int k=0;k<myWords.length;k++) { 
 			String current = myWords[k];
-			char firstChar = current.charAt(0);
-			int firstValue = (int) firstChar;
-			myHash = (current.hashCode() + current.length() / firstValue) + k;
+			myHash = current.length() + current.length() + k + (k/current.length());
 		}
 	
 		return myHash;
@@ -34,7 +32,7 @@ public class WordGram implements Comparable<WordGram>{
 		for(int x=0;x<myWords.length;x++) {
 			stringReturn = stringReturn + " " + myWords[x];
 		}
-		return stringReturn;
+		return stringReturn.substring(1);
 	}
 	
 	
@@ -51,7 +49,7 @@ public class WordGram implements Comparable<WordGram>{
 		}
 		
 		for(int x=0;x<myWords.length;x++) {
-			if(myWords[x]!=wg.myWords[x]) {
+			if(!myWords[x].equals(wg.myWords[x])) {
 				return false;
 			}
 		}

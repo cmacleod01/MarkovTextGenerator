@@ -7,22 +7,19 @@ import java.util.NoSuchElementException;
 public class EfficientMarkov extends MarkovModel {
 		
 		private Map<String,ArrayList<String>> myMap;
+		private String text;
+		private int myOrder;
 
 		
 		EfficientMarkov(int order) {
 			super(order);
-			setTraining(myText); 
-			
-			
+			setTraining(text); 
 		}
-		
 		
 		@Override
 		public void setTraining(String text) {	
 			myMap = new HashMap<String, ArrayList<String>>();
-			System.out.println(myMap);
 			myText = text;
-			System.out.println(myMap);
 			myMap.clear();
 			int myOrder1 = myOrder;
 			int pos = 0;
