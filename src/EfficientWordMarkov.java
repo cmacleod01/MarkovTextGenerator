@@ -10,7 +10,7 @@ public class EfficientWordMarkov extends WordMarkovModel {
 	private String myText;
 	private String[] myWords;
 
-	EfficientWordMarkov(int order) {
+	public EfficientWordMarkov(int order) {
 		super(order);
 		setTraining(myText);
 	}
