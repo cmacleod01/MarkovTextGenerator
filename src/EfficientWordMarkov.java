@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Random;
 import java.util.TreeMap;
 
 public class EfficientWordMarkov extends WordMarkovModel {
@@ -12,7 +13,9 @@ public class EfficientWordMarkov extends WordMarkovModel {
 
 	public EfficientWordMarkov(int order) {
 		super(order);
-		setTraining(myText);
+		myOrder = order;
+//		setTraining(myText);
+		myRandom = new Random(RANDOM_SEED);
 	}
 		
 	@Override

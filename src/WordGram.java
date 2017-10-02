@@ -18,11 +18,12 @@ public class WordGram implements Comparable<WordGram>{
 	
 	@Override
 	public int hashCode() { 
+		int hash = 0;
 		for(int k=0;k<myWords.length;k++) { 
 			String current = myWords[k];
-			myHash = current.length() + current.length() + k + (k/current.length());
+			hash += current.length() + current.length() + k + (k/current.length());
 		}
-	
+		hash = myHash;
 		return myHash;
 	}
 	
