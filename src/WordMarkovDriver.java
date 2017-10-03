@@ -2,13 +2,13 @@ import java.io.File;
 
 public class WordMarkovDriver {
 	public static void main(String[] args) {
-		String filename = "data/testfile.txt";
+		String filename = "data/trump-un-sept19-17.txt";
 		if (args.length > 0) {
 			filename = args[1];
 		}
 		File f = new File(filename);
 		String theText = TextSource.textFromFile(f);
-//		System.out.println(text);
+
 		
 		for(int k=1; k <= 5; k++) {
 			MarkovInterface<WordGram> markov = new EfficientWordMarkov(k); 

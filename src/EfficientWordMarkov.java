@@ -1,57 +1,56 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Random;
 import java.util.TreeMap;
 
 public class EfficientWordMarkov extends WordMarkovModel {
 	
-	private TreeMap<WordGram,ArrayList<String>> newMap = new TreeMap<WordGram, ArrayList<String>>();; //instance variables
-	private String myText;
+	private TreeMap<WordGram,ArrayList<String>> newMap; //instance variables
 	private String[] myWords;
-
 	public EfficientWordMarkov(int order) { //constructor
 		super(order);
-		myOrder = order;
-//		newMap = new TreeMap<WordGram, ArrayList<String>>();
-//		setTraining(myText);
-		myRandom = new Random(RANDOM_SEED);
+
 	}
 		
 	@Override
 	public void setTraining(String text){ //creates map
-		myText = text;
+		newMap = new TreeMap<WordGram, ArrayList<String>>();
 		myWords = text.split("\\s+");
-		newMap.clear();
-		int myOrder1 = myOrder;
-		for(int i=0;i<(myWords.length-myOrder1);i++) {
+		for(int i=0;i<(myWords.length-myOrder+1);i++) {
 			WordGram currentWG = new WordGram(myWords,i,myOrder);
 			if(!newMap.containsKey(currentWG)) {
 				ArrayList<String> valueList = new ArrayList<String>();
 				newMap.put(currentWG, valueList);
 			}
-			String after = myWords[i+myOrder1];
-			newMap.get(currentWG).add(after);
+			
+			if (myOrder + i >= myWords.length) {
+				newMap.get(currentWG).add(PSEUDO_EOS);
 			}
-//		String lastBit = myWords[myWords.length-myOrder, myWords.length];
-//		if(!newMap.containsKey(lastBit)) {
-//			ArrayList<String> valueList = new ArrayList<String>();
-//			newMap.put(lastBit, valueList);
-//		}
-//		newMap.get(lastBit).add(PSEUDO_EOS);
-				
+			if((myOrder+i)<myWords.length) {
+			
+				newMap.get(currentWG).add(myWords[myOrder+i]);
+			}
+		
+			}
+//System.out.println(newMap);
+			
 }
 	@Override
 	public ArrayList<String> getFollows(WordGram key){
-		if(newMap.keySet().contains(key)) {
-			return newMap.get(key);
+		ArrayList<String> myValues = newMap.get(key);
+		if(myValues == null) {
+			return new ArrayList<String>();
 		}
-//		else {
-//			throw new NoSuchElementException();
+		return myValues;
+//		System.out.println(key);
+//		System.out.println(newMap.keySet());
+//		if(newMap.keySet().contains(key)) {
+//			return newMap.get(key);
 //		}
-	}
+//		else {
+//			ArrayList<String> 
+//			throw new NoSuchElementException();
+		}
+	
 	
 	public String getRandomText(int length){
 		ArrayList<String> sb = new ArrayList<>();
@@ -69,7 +68,6 @@ public class EfficientWordMarkov extends WordMarkovModel {
 			
 			String nextItem = follows.get(index2);
 			if (nextItem.equals(PSEUDO_EOS)) {
-				//System.out.println("PSEUDO");
 				break;
 			}
 			sb.add(nextItem);
