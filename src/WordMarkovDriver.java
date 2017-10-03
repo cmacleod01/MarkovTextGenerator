@@ -2,16 +2,18 @@ import java.io.File;
 
 public class WordMarkovDriver {
 	public static void main(String[] args) {
-		String filename = "data/alice.txt";
+		String filename = "data/testfile.txt";
 		if (args.length > 0) {
 			filename = args[1];
 		}
 		File f = new File(filename);
-		String text = TextSource.textFromFile(f);
+		String theText = TextSource.textFromFile(f);
+//		System.out.println(text);
 		
 		for(int k=1; k <= 5; k++) {
-			MarkovInterface<WordGram> markov = new WordMarkovModel(k); //new EfficientWordMarkov(k);
-			markov.setTraining(text);
+			MarkovInterface<WordGram> markov = new EfficientWordMarkov(k); 
+//					new WordMarkovModel(k);
+			markov.setTraining(theText);
 			String random = markov.getRandomText(50);
 			System.out.printf("%d markov model with %d words\n", k,random.split("\\s").length);
 			printNicely(random,60);
