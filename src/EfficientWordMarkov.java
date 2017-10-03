@@ -7,23 +7,22 @@ import java.util.TreeMap;
 
 public class EfficientWordMarkov extends WordMarkovModel {
 	
-	
+	private HashMap<WordGram,ArrayList<String>> newMap = new HashMap<WordGram, ArrayList<String>>();; //instance variables
+	private String myText;
+	private String[] myWords;
 
 	public EfficientWordMarkov(int order) { //constructor
 		super(order);
-		Map<WordGram,ArrayList<String>> newMap; //instance variables
-		String myText;
-		String[] myWords;
 		myOrder = order;
+//		newMap = new HashMap<WordGram, ArrayList<String>>();
 //		setTraining(myText);
 		myRandom = new Random(RANDOM_SEED);
 	}
 		
 	@Override
 	public void setTraining(String text){ //creates map
-		myText = text;
-		newMap = new HashMap<WordGram, ArrayList<String>>();
 		myWords = myText.split("\\s+");
+		myText = text;
 		newMap.clear();
 		int myOrder1 = myOrder;
 		for(int i=0;i<(myWords.length-myOrder1);i++) {
