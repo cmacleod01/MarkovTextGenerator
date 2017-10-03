@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class EfficientMarkov extends MarkovModel {
 		
-		private Map<String,ArrayList<String>> myMap;
+		private Map<String,ArrayList<String>> myMap; //instance variables
 		private int myOrder;
 
 		
-		public EfficientMarkov(int order) {
+		public EfficientMarkov(int order) { //creates object
 			super(order);
 			myOrder = order;
 			myRandom = new Random(RANDOM_SEED);
@@ -19,7 +19,7 @@ public class EfficientMarkov extends MarkovModel {
 		}
 		
 		@Override
-		public void setTraining(String text) {	
+		public void setTraining(String text) {	 //creates map
 			myMap = new HashMap<String, ArrayList<String>>();
 			myText = text;
 			myMap.clear();
@@ -46,7 +46,7 @@ public class EfficientMarkov extends MarkovModel {
 		
 		
 		@Override
-		public ArrayList<String> getFollows(String key){
+		public ArrayList<String> getFollows(String key){ //gets next
 			if(myMap.keySet().contains(key)) {
 				return myMap.get(key);
 			}

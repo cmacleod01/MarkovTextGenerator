@@ -7,7 +7,7 @@ public class WordGram implements Comparable<WordGram>{
 	private String[] myWords;
 
 	
-	public WordGram(String[] words, int index, int size) {
+	public WordGram(String[] words, int index, int size) { //creates wordgram
 		myWords = new String[size];
 		for(int start = 0;start<size;start++) {
 			myWords[start] = words[start+index];
@@ -17,18 +17,16 @@ public class WordGram implements Comparable<WordGram>{
 	}
 	
 	@Override
-	public int hashCode() { 
-		int hash = 0;
+	public int hashCode() { //creates hashcode
 		for(int k=0;k<myWords.length;k++) { 
 			String current = myWords[k];
-			hash += current.length() + current.length() + k + (k/current.length());
+			myHash += current.length() + current.length() + k + (k/current.length());
 		}
-		hash = myHash;
 		return myHash;
 	}
 	
 	@Override
-	public String toString() {
+	public String toString() { //turns to string
 		String stringReturn = "";
 		for(int x=0;x<myWords.length;x++) {
 			stringReturn = stringReturn + " " + myWords[x];
@@ -38,7 +36,7 @@ public class WordGram implements Comparable<WordGram>{
 	
 	
 	@Override
-	public boolean equals(Object other) {
+	public boolean equals(Object other) { //are they equal?
 		if (other == null || ! (other instanceof WordGram)) {
 			return false;
 		}
@@ -61,7 +59,7 @@ public class WordGram implements Comparable<WordGram>{
 	
 	
 	@Override
-	public int compareTo(WordGram wg) {
+	public int compareTo(WordGram wg) { //bigger or smaller?
 		int firstSize = this.myWords.length;
 		int secondSize = wg.myWords.length; 
 		if(firstSize==0) {
@@ -93,11 +91,11 @@ public class WordGram implements Comparable<WordGram>{
 		
 	
 
-	public int length() {
+	public int length() { //length of myWords
 		return myWords.length;
 	}
 	
-	public WordGram shiftAdd(String last) {
+	public WordGram shiftAdd(String last) { //shift wordgram
 		String[] newArray = new String[this.length()];
 		for(int i=0;i<this.length()-1;i++) {
 			newArray[i] = this.myWords[i+1];
