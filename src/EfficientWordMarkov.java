@@ -4,7 +4,7 @@ import java.util.TreeMap;
 
 public class EfficientWordMarkov extends WordMarkovModel {
 	
-	private TreeMap<WordGram,ArrayList<String>> newMap; //instance variables
+	public TreeMap<WordGram,ArrayList<String>> newMap; //instance variables
 	private String[] myWords;
 	public EfficientWordMarkov(int order) { //constructor
 		super(order);
