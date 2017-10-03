@@ -23,8 +23,8 @@ public class EfficientMarkov extends MarkovModel {
 			myMap = new HashMap<String, ArrayList<String>>();
 			myText = text;
 //			int myOrder1 = myOrder;
-			for(int k=0;k<text.length() - myOrder + 1;k++) {
-				String current = text.substring(k,k+myOrder);
+			for(int k=0;k<text.length() - myOrder + 1;k++) { //loops through
+				String current = text.substring(k,k+myOrder); //key
 				if(!myMap.containsKey(current)) {
 					ArrayList<String> valueList = new ArrayList<String>();
 					myMap.put(current, valueList);
@@ -32,6 +32,7 @@ public class EfficientMarkov extends MarkovModel {
 				else if (myOrder + k >= text.length()) {
 					myMap.get(current).add(PSEUDO_EOS);
 				}
+				//next
 				if((myOrder+k)<text.length()) {
 					String after = text.substring(k+myOrder,k+(myOrder+1));
 					myMap.get(current).add(after);

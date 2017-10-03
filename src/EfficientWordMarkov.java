@@ -14,9 +14,9 @@ public class EfficientWordMarkov extends WordMarkovModel {
 	@Override
 	public void setTraining(String text){ //creates map
 		newMap = new TreeMap<WordGram, ArrayList<String>>();
-		myWords = text.split("\\s+");
+		myWords = text.split("\\s+"); //splits on whitespace
 		for(int i=0;i<(myWords.length-myOrder+1);i++) {
-			WordGram currentWG = new WordGram(myWords,i,myOrder);
+			WordGram currentWG = new WordGram(myWords,i,myOrder); //new wg
 			if(!newMap.containsKey(currentWG)) {
 				ArrayList<String> valueList = new ArrayList<String>();
 				newMap.put(currentWG, valueList);
@@ -24,13 +24,13 @@ public class EfficientWordMarkov extends WordMarkovModel {
 			
 			
 			if (myOrder + i >= myWords.length) {
-				newMap.get(currentWG).add(PSEUDO_EOS);
+				newMap.get(currentWG).add(PSEUDO_EOS); //end of string char
 			}
 			
 			
 			if((myOrder+i)<myWords.length) {
 			
-				newMap.get(currentWG).add(myWords[myOrder+i]);
+				newMap.get(currentWG).add(myWords[myOrder+i]); //adds to map
 			}
 		
 			}

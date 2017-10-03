@@ -2,7 +2,7 @@ import java.io.File;
 
 public class WordMarkovDriver {
 	public static void main(String[] args) {
-		String filename = "data/trump-un-sept19-17.txt";
+		String filename = "data/testfile.txt";
 		if (args.length > 0) {
 			filename = args[1];
 		}
