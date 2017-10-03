@@ -20,7 +20,7 @@ public class WordGram implements Comparable<WordGram>{
 	public int hashCode() { //creates hashcode
 		for(int k=0;k<myWords.length;k++) { 
 			String current = myWords[k];
-			myHash += current.length() + current.length() + k + (k/current.length());
+			myHash = current.length() + current.length() + k + myWords[k].hashCode();
 		}
 		return myHash;
 	}
