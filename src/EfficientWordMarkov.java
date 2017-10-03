@@ -5,7 +5,7 @@ import java.util.TreeMap;
 public class EfficientWordMarkov extends WordMarkovModel {
 	
 	public TreeMap<WordGram,ArrayList<String>> newMap; //instance variables
-	private String[] myWords;
+	public String[] myWords;
 	public EfficientWordMarkov(int order) { //constructor
 		super(order);
 
@@ -22,9 +22,12 @@ public class EfficientWordMarkov extends WordMarkovModel {
 				newMap.put(currentWG, valueList);
 			}
 			
+			
 			if (myOrder + i >= myWords.length) {
 				newMap.get(currentWG).add(PSEUDO_EOS);
 			}
+			
+			
 			if((myOrder+i)<myWords.length) {
 			
 				newMap.get(currentWG).add(myWords[myOrder+i]);

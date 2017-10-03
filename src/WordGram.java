@@ -3,8 +3,8 @@ import java.util.Arrays;
 
 public class WordGram implements Comparable<WordGram>{
 	
-	private int myHash;
-	private String[] myWords;
+	public int myHash;
+	public String[] myWords;
 
 	
 	public WordGram(String[] words, int index, int size) { //creates wordgram

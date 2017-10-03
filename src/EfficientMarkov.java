@@ -3,18 +3,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Random;
+
 
 public class EfficientMarkov extends MarkovModel {
 		protected static String PSEUDO_EOS = "";
 		
-		private Map<String,ArrayList<String>> myMap; //instance variables
+		public Map<String,ArrayList<String>> myMap; //instance variables
 
 		
 		public EfficientMarkov(int order) { //creates object
 			super(order);
 			//myOrder = order;
-			//myRandom = new Random(RANDOM_SEED);
+	
 			
 		}
 		
