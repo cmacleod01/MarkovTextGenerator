@@ -22,7 +22,7 @@ public class EfficientWordMarkov extends WordMarkovModel {
 	@Override
 	public void setTraining(String text){ //creates map
 		myText = text;
-		myWords = myText.split("\\s+");
+		myWords = text.split("\\s+");
 		newMap.clear();
 		int myOrder1 = myOrder;
 		for(int i=0;i<(myWords.length-myOrder1);i++) {
