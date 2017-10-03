@@ -15,14 +15,14 @@ public class EfficientWordMarkov extends WordMarkovModel {
 		super(order);
 		myOrder = order;
 //		newMap = new HashMap<WordGram, ArrayList<String>>();
-//		setTraining(myText);
+		setTraining(myText);
 		myRandom = new Random(RANDOM_SEED);
 	}
 		
 	@Override
 	public void setTraining(String text){ //creates map
-		myWords = myText.split("\\s+");
 		myText = text;
+		myWords = myText.split("\\s+");
 		newMap.clear();
 		int myOrder1 = myOrder;
 		for(int i=0;i<(myWords.length-myOrder1);i++) {
